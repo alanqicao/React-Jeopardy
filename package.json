@@ -3,5 +3,31 @@
     "react-router-dom": "^5.1.2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2"
-  }
+  },
+  "name": "React-Jeopardy",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanqicao/React-Jeopardy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanqicao/React-Jeopardy/issues"
+  },
+  "homepage": "https://github.com/alanqicao/React-Jeopardy#readme"
 }
