@@ -13,6 +13,8 @@
 
 Category.create(name: 'Javascript')
 Category.create(name: 'Ruby')
+Category.create(name: 'Python')
+Category.create(name: 'HTML')
 
 Card.create(
   question: 1 ,
