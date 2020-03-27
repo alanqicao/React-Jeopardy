@@ -6,6 +6,7 @@ import NoMatch from './components/NoMatch';
 import { Container, } from "semantic-ui-react";
 import EditCategory from './components/EditCategorys';
 import Navbar from './components/Navbar'
+import CategoryView from './components/CategoryView'
 
 const App = () => (
   <Fragment>
@@ -15,6 +16,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
       <Route exact path="/EditCategorys" component={EditCategory} />
+      <Route exact path="/categorys/:id" component={CategoryView} />
       <Route component={NoMatch} />
     </Switch>
   </Container>
