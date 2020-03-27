@@ -21,11 +21,15 @@ const CategorysForm =(props) =>{
                const newCategorys = categorys.map(category => {
                 if (category.id === id) 
                 return res.data;
-                return category;
+                editCategory({newCategorys});
                 
+            
               });
-              editCategory({newCategorys});
-            });
+            })
+            .catch(e => {
+              console.log('not working')
+              console.log(e)
+            })
         
       } else {
       axios.post("/api/categorys",{name:name.value,})
