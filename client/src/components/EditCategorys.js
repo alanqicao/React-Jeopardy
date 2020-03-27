@@ -1,46 +1,62 @@
-import React, {useEffect,useState,} from 'react';
-import { Header, RowCenter, Title, Button,Segment, List} from "semantic-ui-react";
+import React, { useEffect, useState, } from 'react';
+import CategorysForm from "./CategorysForm"
+import { Header, RowCenter, Title, Button, Segment, List } from "semantic-ui-react";
 import axios from 'axios'
+
 
 
 const EditCategory = props => {
 
-    const [categorys,setName] = useState ([]);
+  const [categorys, setName] = useState([]);
+  const [cards, setCard] = useState ([]);
+  const [questions,setQuestion] = useState ([])
+  const [showForm,setShowForm] = useState(false)
 
-  useEffect(()=>{
+  useEffect(() => {
     axios
-    .get("/api/categorys")
-    .then(res => {
-      setName(res.data);
-    }
+      .get("/api/categorys")
+      .then(res => {
+        setName(res.data);
+      }
+      )
+    
+  }, [])
+
+   const addCategory = (category) => setName ([...categorys, category,])
+
+  const renderCategory = () => {
+    return categorys.map(category => (
+      <Segment key={category.id}>
+
+        <List.Header as="h3">{category.name}</List.Header>
+
+      </Segment>
     )
-   
-  },[])
+
+    )
+  }
+
+   useEffect(() => {
+    axios
+    .post(`/api/categorys/`)
+  })
 
 
-const renderCategory = () =>{
-  return categorys.map( category => (
-    <Segment key ={category.id}>
 
-      <List.Header as ="h3">{category.name}</List.Header>
 
-    </Segment>
-  )
-
+  return (
+    <>
+      <Header as="h1">Edit Category</Header>
+      <br />
+      { showForm && <CategorysForm toggleForm ={setShowForm} add = {addCategory}/>}
+      <Button onClick ={()=> setShowForm (!showForm)}>
+        { showForm ? "Close Form" : "Add "}
+      </Button>
+      <List>
+        {renderCategory()}
+      </List>
+    </>
   )
 }
-
-
-
-
-  return(
-  <>
-  <Header as="h1">Edit Cards</Header>
-  <br/>
-  <List>
-    {renderCategory()}
-  </List>
-  </>
-)}
 
 export default EditCategory;
