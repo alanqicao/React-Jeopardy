@@ -1,18 +1,16 @@
 import React, { useState, } from "react";
 import axios from "axios";
 import { Form, } from "semantic-ui-react";
+import {useFormInput,} from "../hooks/useFormInput";
 
 const CategorysForm =(props) =>{
 
-  const [name, setName] = useState("");
-
-  // const handleNameChange =(e) =>{
-  //   setName(e.target.value)
-  // }
+  // const [name, setName] = useState("");
+  const name = useFormInput("")
 
   const handleSubmit =(e) =>{
       e.preventDefault();
-      axios.post("/api/categorys",{name})
+      axios.post("/api/categorys",{name:name.value,})
       .then(res => {
         props.add(res.data)
         props.toggleForm();
@@ -29,8 +27,7 @@ const CategorysForm =(props) =>{
             placeholder="Name"
             name="name"
             required
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            {...name}
           />
             </Form.Group>
         <Form.Button>Submit</Form.Button>
