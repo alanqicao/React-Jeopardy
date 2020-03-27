@@ -7,14 +7,29 @@ const CategorysForm =(props) =>{
 
   // const [name, setName] = useState("");
   const name = useFormInput("")
-
+  const {id,deleteCategory,editCategory,addCategory,categorys} = props
+  
   const handleSubmit =(e) =>{
       e.preventDefault();
+      // checkif you are editing
+      if(props.isEditing){
+
+        
+          axios
+            .put(`/api/categorys/${id}`,{name:name.value})
+            .then(res => {
+               const newCategorys = categorys.map(category => category.id === id)
+                editCategory(newCategorys); 
+              
+            });
+        
+      } else {
       axios.post("/api/categorys",{name:name.value,})
       .then(res => {
-        props.add(res.data)
+        props.add(res.data) // passsing this add prop to update ui
         props.toggleForm();
       })
+    }
   };
 
 

@@ -25,7 +25,7 @@ const Category = props => {
       <Button onClick={() => deleteCategory(id)} color='red'>Delete Category</Button>
       <Button onClick={toggle} color='pink' >Edit Category</Button>
       {showEdit ? (
-        <CategorysForm toggleEdit={toggle} {...props} editCategory={editCategory}  add = {addCategory}/>
+        <CategorysForm toggleEdit={toggle} {...props} editCategory={editCategory} isEditing={true} add = {addCategory}/>
       ) : (
           <></>
         )}
