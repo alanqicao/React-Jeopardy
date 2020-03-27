@@ -18,9 +18,13 @@ const CategorysForm =(props) =>{
           axios
             .put(`/api/categorys/${id}`,{name:name.value})
             .then(res => {
-               const newCategorys = categorys.map(category => category.id === id)
-                editCategory(newCategorys); 
-              
+               const newCategorys = categorys.map(category => {
+                if (category.id === id) 
+                return res.data;
+                return category;
+                
+              });
+              editCategory({newCategorys});
             });
         
       } else {
@@ -39,7 +43,7 @@ const CategorysForm =(props) =>{
         <Form.Group widths="equal">
           <Form.Input
             label="Name"
-            placeholder="Name"
+            placeholder= {props.name}
             name="name"
             required
             {...name}

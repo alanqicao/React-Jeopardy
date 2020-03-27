@@ -3,7 +3,7 @@ import { Button, Header, Icon, Segment, List } from "semantic-ui-react";
 import CategorysForm from "./CategorysForm"
 import { Link, } from "react-router-dom";
 
-const Category = props => {
+const Category = (props) => {
 
   const [showEdit, setShowEdit] = useState(false)
 
@@ -12,7 +12,7 @@ const Category = props => {
   }
 
 
-  const {id,deleteCategory,editCategory,name,addCategory} = props
+  const {id,deleteCategory,editCategory,name,addCategory,categorys} = props
   
   return (
     
