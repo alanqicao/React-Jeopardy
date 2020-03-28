@@ -8,25 +8,32 @@ const CategorysForm =(props) =>{
   // const [name, setName] = useState("");
   const name = useFormInput("")
   const {id,deleteCategory,editCategory,addCategory,categorys} = props
+  console.log(categorys)
+  console.log(props)
+
   
   const handleSubmit =(e) =>{
       e.preventDefault();
       // checkif you are editing
       if(props.isEditing){
 
-        
           axios
             .put(`/api/categorys/${id}`,{name:name.value})
             .then(res => {
-               const newCategorys = categorys.map(category => {
-                if (category.id === id) 
-                return res.data;
-                editCategory({newCategorys});
+              console.log(res.data)
+              const newCategorys = categorys.map((category) => {
+          
+                if (category.id === id) {
+                   return res.data;
+                }
+                return category
                 
-            
               });
+             editCategory(newCategorys);
+             console.log(newCategorys)// correct
             })
             .catch(e => {
+              
               console.log('not working')
               console.log(e)
             })
