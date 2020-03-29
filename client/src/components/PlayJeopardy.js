@@ -32,8 +32,6 @@ const PlayJeopardy = () => {
               </div>
             </Segment>
           </Grid.Column>
-
-
         )
       })
     )

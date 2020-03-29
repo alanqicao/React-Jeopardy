@@ -25,10 +25,10 @@ Card.create(
 Question.create(
   question: 'Is Javascript the same thing as Java',
   type_of_question: 'Multiple Choice',
-  correct_answer: 'An Instance Variable',
+  correct_answer: 'Not at all',
   answer_1: 'Absolutely',
   answer_2: 'It is in a way', 
-  answer_3: 'An Instance Variable',
+  answer_3: 'Not at all',
   answer_4: 'All languages are the same',
   card_id: 1,
 )
@@ -54,7 +54,7 @@ Card.create(
   question: 3 ,
   answer: '',
   points: 100,
-  category_id: 1,
+  category_id: 2,
 )
 Question.create(
   question: 'What is (@something = something) in ruby',
@@ -76,7 +76,7 @@ Card.create(
 Question.create(
   question: 'What part of MVC talks to the Database',
   type_of_question: 'Multiple Choice',
-  correct_answer: 'The Contoller',
+  correct_answer: 'The Model',
   answer_1: 'The Model',
   answer_2: 'Nothing does', 
   answer_3: 'The View',
