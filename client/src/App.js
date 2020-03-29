@@ -8,6 +8,7 @@ import ConnectedPlayJeopardy from './components/PlayJeopardy';
 import EditCategory from './components/EditCategorys';
 import Navbar from './components/Navbar'
 import CategoryView from './components/CategoryView'
+import ShowCard from './components/ShowCard';
 
 const App = () => (
   <Fragment>
@@ -19,6 +20,7 @@ const App = () => (
       <Route exact path='/playjeopardy' component={ConnectedPlayJeopardy} />
       <Route exact path="/EditCategorys" component={EditCategory} />
       <Route exact path="/categorys/:id" component={CategoryView} />
+      <Route exact path="/showCard/:id" component={ShowCard} />
       <Route component={NoMatch} />
     </Switch>
   </Container>

@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Button } from 'semantic-ui-react'
+import { Segment} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class Cards extends React.Component {
@@ -23,11 +23,13 @@ class Cards extends React.Component {
     return (
       cards.map(card => {
         return (
-          <Link>
-            <div>
+          <div key={`card-${card.id}`}>
+          <Link to={`/showCard/${card.id}`}>
+            <Segment style={{color:'white', backgroundColor:'#49b6d1', border:'1px solid white', margin:'5px 0 '}}>
               {card.points}
-            </div>
+            </Segment>
           </Link>
+          </div>
         )
       })
     )

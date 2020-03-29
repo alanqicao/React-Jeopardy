@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 
 const Home = () => {
-  useEffect(() => {
-    axios.get('/api/categorys').then((r) => {
-      console.log(r)
-    })
-      .catch(() => {
-        console.log("here")
-      })
-  })
+  // useEffect(() => {
+  //   axios.get('/api/categorys').then((r) => {
+  //     console.log(r)
+  //   })
+  //     .catch(() => {
+  //       console.log("here")
+  //     })
+  // })
   return (
     <>
       <Header as="h1">Home</Header>
