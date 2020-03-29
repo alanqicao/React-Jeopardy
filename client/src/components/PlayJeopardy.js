@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import Cards from './Cards'
+import { Grid } from "semantic-ui-react";
 
 const PlayJeopardy = () => {
-
   const [categorys, setCategory] = useState([]);
-
-
 
   useEffect(() => {
     axios.get(`/api/categorys/`)
@@ -15,30 +14,22 @@ const PlayJeopardy = () => {
 
   }, [])
 
-  const getCards = (id) => {
-    let cards = []
-    axios.get(`api/categorys/${id}/cards`).then((res) => {
-      cards.push(res.data)
-    }).catch(e => console.log(e))
-    return (cards)
-  }
 
   const renderCategories = () => {
     return (
       categorys.map(category => {
-        let cards = getCards(category.id)
-        const formatCards = (cards) => {
-            cards.map(card => {
-              return (<div key={`key-${card.id}`}>{card.points}</div>)
-            })
+        const cardsFormatted = (id) => {
+          return <Cards id={id} />
         }
         return (
-          <div key={`category-${category.id}`}>
-            {category.name}
-            <div>
-              {()=> formatCards(cards)}
+          <Grid.Column>
+            <div key={`category-${category.id}`} style={{ border: '1px solid black' }}>
+              {category.name}
+              <div>
+                {cardsFormatted(category.id)}
+              </div>
             </div>
-          </div>
+          </Grid.Column>
 
         )
       })
@@ -48,8 +39,10 @@ const PlayJeopardy = () => {
 
   return (
     <>
-      {renderCategories()}
-      <div>Jeopardy</div>
+
+      <Grid container columns={4}>
+        {renderCategories()}
+      </Grid>
     </>
   )
 
