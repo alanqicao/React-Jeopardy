@@ -25,11 +25,11 @@ const EditCategory = () => {
   }, [])
 
    
-
+  
   const renderCategory = () => {
-    return categorys.map(categorys => (
-      <div key={`cat-${categorys.id}`} style={{ margin: "0em 1em" }}>
-        <Category id = {categorys.id} {...categorys} editCategory={editCategory} deleteCategory={deleteCategory}/>
+    return categorys.map(category => (
+      <div key={`cat-${category.id}`} style={{ margin: "0em 1em" }}>
+        <Category id = {category.id} {...category} editCategory={editCategory} categorys ={categorys} deleteCategory={deleteCategory} />
       </div>
     )
 
@@ -39,13 +39,15 @@ const EditCategory = () => {
   // this is kinda of correct, need wor.k
   const addCategory = (category) => setCategorys ([...categorys, category])
 
-  const editCategory = (newCategorys) => setCategorys ([newCategorys])
+  const editCategory = (newCategorys) => {
+    setCategorys (newCategorys)
+  }
   // put this in your form
 
   // const editCategory =(id,category) => {
   //   axios
   //     .put(`/api/categorys/${id}`, category)
-  //     .then(res => {
+  //     .then(res => 
   //        const newCard = categorys.map(category => {
   //         if (category.id === id) return res.data;
   //         return category;
@@ -71,7 +73,7 @@ const EditCategory = () => {
     <>
       <Header as="h1">Edit Category</Header>
       <br />
-      { showForm && <CategorysForm toggleForm ={setShowForm} add={addCategory} />}
+      { showForm && <CategorysForm toggleForm ={setShowForm} add={addCategory} editCategory={editCategory}  categorys2 ={categorys} />}
       <Button onClick ={()=> setShowForm (!showForm)}>
         { showForm ? "Close Form" : "Add "}
       </Button>
